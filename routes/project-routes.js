@@ -19,18 +19,18 @@ router.get('/projects', (req, res, next) => {
 
 // POST route => to create a new project
 router.post('/projects', (req, res, next)=>{
-
   Project.create({
     title: req.body.title,
     description: req.body.description,
-    tasks: []
+    tasks: [],
+    owner: req.user._id
   })
-    .then(response => {
-      res.json(response);
-    })
-    .catch(err => {
-      res.json(err);
-    })
+  .then(response => {
+  res.json(response);
+  })
+  .catch(err => {
+  res.json(err);
+  })
 });
 
 // GET route => to get a specific project/detailed view
